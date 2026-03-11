@@ -1,2 +1,4 @@
 config SHIELD_MYMOUSE
     def_bool $(shields_list_contains,mymouse)
+    select ZMK_KSCAN_DIRECT_GPIO
+    select SPI
