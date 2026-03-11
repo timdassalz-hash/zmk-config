@@ -1,25 +1,25 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+/* ADD THIS LINE TO FIX THE PARSE ERROR */
+#include <dt-bindings/zmk/matrix_transform.h> 
 
 / {
-    /* 1. Add the missing chosen nodes to fix previous 'layouts' errors */
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
         zmk,physical-layout = &mymouse_layout;
     };
 
-    /* 2. Define your button hardware */
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-direct";
         input-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 
-    /* 3. Define the mandatory mapping layer */
+    /* This maps your physical button to the keymap */
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <1>;
         rows = <1>;
-        map = <RC(0,0)>;
+        map = <RC(0,0)>; 
     };
 
     mymouse_layout: mymouse_layout {
@@ -29,31 +29,20 @@
         kscan = <&kscan0>;
     };
 
-    /* 4. Define the listener here, referencing the trackball label */
-    trackball_listener: trackball_listener {
+    trackball_listener {
         compatible = "zmk,input-listener";
-        device = <&trackball>; // This must match the label in the SPI block
+        device = <&trackball>;
     };
 };
 
-/* 5. Keep your existing SPI and Trackball hardware config */
-&spi0 {
-    status = "okay";
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio0 20 GPIO_ACTIVE_LOW>;
+/* Rest of your existing &pinctrl and &spi0 blocks */
+&pinctrl {
+    /* ... your existing config ... */
+};
 
-    /* Ensure 'trackball:' label is present here */
+&spi0 {
+    /* ... your existing config ... */
     trackball: trackball@0 {
-        status = "okay";
-        compatible = "pixart,paw3395";
-        reg = <0>;
-        spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
+        /* ... your existing config ... */
     };
 };
