@@ -2,8 +2,6 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: nickcoutsos
-      url-base: https://github.com/nickcoutsos
     - name: badjeff
       url-base: https://github.com/badjeff
   projects:
@@ -11,9 +9,6 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-nice-nano
-      remote: nickcoutsos
-      revision: master
     - name: zmk-paw3395-driver
       remote: badjeff
       revision: main
