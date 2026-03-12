@@ -15,7 +15,6 @@
                 &mkp MB6
                 &mkp MB7
             >;
-            sensor-bindings = <&inc_dec_msc SCRL_UP SCRL_DOWN>;
         };
     };
 };
