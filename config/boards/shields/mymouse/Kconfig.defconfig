@@ -1,0 +1,10 @@
+if SHIELD_MYMOUSE
+config ZMK_KEYBOARD_NAME
+    default "mymouse"
+config ZMK_SPLIT
+    default y
+config BT_MAX_CONN
+    default 2
+config BT_MAX_PAIRED
+    default 2
+endif
