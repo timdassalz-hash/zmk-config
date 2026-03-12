@@ -12,6 +12,8 @@
                 &mkp MB3
                 &mkp MB4
                 &mkp MB5
+                &kp F13
+                &kp F14
             >;
         };
     };
