@@ -8,7 +8,8 @@
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-direct";
         input-gpios
-            = <&gpio0 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             , <&gpio0 8  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
@@ -59,5 +60,7 @@
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
+        invert-x;
+        invert-y;
     };
 };
